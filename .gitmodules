@@ -1,0 +1,3 @@
+[submodule "hackzurichServer"]
+	path = hackzurichServer
+	url = https://github.com/RadekJ1992/hackzurichServer
