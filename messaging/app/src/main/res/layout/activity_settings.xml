@@ -11,17 +11,18 @@ tools:context="com.google.firebase.quickstart.fcm.SettingsActivity">
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/commitButton"/>
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settingsCommitButton"
-        android:onClick="commitSettings"
+        android:layout_gravity="center_horizontal"/>
+
+    <ImageButton
         android:id="@+id/commitButton"
-        android:layout_gravity="center"/>
+        android:onClick="commitSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:src="@drawable/send"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
 

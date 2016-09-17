@@ -35,12 +35,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     }
 
     protected void commitSettings(View view) {
-        boolean violence = false;
-        CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_1);
-        if (checkBox.isChecked()) {
-            violence = true;
-        }
-
         // send preferences to MainActivity and finish this activity
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("settings", result);
