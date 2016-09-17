@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             // case 1: the ittent is from settingsActivity
             if (getIntent().getExtras().get("settings") != null) {
-                // TODO: extract
+                new sendtoServer().execute(FirebaseInstanceId.getInstance().getToken(), getIntent().getExtras().get("settings").toString());
             } else {
                 for (String key : getIntent().getExtras().keySet()) {
                     Object value = getIntent().getExtras().get(key);
@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             try {
                 Log.d(TAG,"sending to server");
+                String settingsString = strings[0];
                 String url = "http://172.31.4.188:8080/setMobileIdAndKeywords?keywords=fire,gun&mobileId=123";
                 URL obj = new URL(url);
                 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
