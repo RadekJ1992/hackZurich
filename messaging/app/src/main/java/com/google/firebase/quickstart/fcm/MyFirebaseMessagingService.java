@@ -66,26 +66,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String msg = "This is the url" + remoteMessage.getData().toString();
             Log.d(TAG, msg);
 
-            // check whether app is in foreground
-            Context appContext = getApplicationContext();
-            ActivityManager activityManager = (ActivityManager) appContext.getSystemService(Context.ACTIVITY_SERVICE);
-            List<ActivityManager.RunningTaskInfo> services = activityManager
-                    .getRunningTasks(Integer.MAX_VALUE);
-            boolean isActivityFound = false;
-
-            if (services.get(0).topActivity.getPackageName().toString()
-                    .equalsIgnoreCase(appContext.getPackageName().toString())) {
-                isActivityFound = true;
-            }
-
-
-
-            if (isActivityFound) {
+            if (MainActivity.isInForeground()) {
                 Intent dialogIntent = new Intent(this, CameraActivity.class);
                 dialogIntent.putExtra("image_url",remoteMessage.getData().toString());
                 dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(dialogIntent);
-
             } else {
                 Intent resultIntent = new Intent(this, MainActivity.class);
                 resultIntent.putExtra("image_url",remoteMessage.getData().toString());

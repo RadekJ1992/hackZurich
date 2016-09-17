@@ -44,12 +44,15 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private final String USER_AGENT = "Mozilla/5.0";
     private static final String TOKEN_ID = "token_id";
+    private static boolean isInForeground = false;
 
     MyReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        isInForeground = true;
 
         // If a notification message is tapped, any data accompanying the notification
         // message is available in the intent extras. In this sample the launcher
@@ -107,11 +110,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume(){
+        isInForeground = true;
         super.onResume();
-
     }
     @Override
     protected void onPause(){
+        isInForeground = false;
         super.onPause();
 
     }
@@ -159,6 +163,10 @@ public class MainActivity extends AppCompatActivity {
             String image_url = intent.getExtras().get("message").toString();
             Log.d(TAG,image_url);
         }
+    }
+
+    public static boolean isInForeground() {
+        return isInForeground;
     }
 
 }
