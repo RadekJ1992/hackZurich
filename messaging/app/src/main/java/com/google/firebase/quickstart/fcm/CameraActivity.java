@@ -33,6 +33,9 @@ public class CameraActivity extends AppCompatActivity {
         WebView web = (WebView) findViewById(R.id.webView);
         web.loadUrl("http://172.31.4.188:8080"+imageURL);
 
+        web.getSettings().setBuiltInZoomControls(true);
+        web.getSettings().setDisplayZoomControls(false);
+
     }
 
 }
