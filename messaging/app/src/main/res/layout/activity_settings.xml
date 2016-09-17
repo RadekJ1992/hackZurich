@@ -26,7 +26,8 @@ tools:context="com.google.firebase.quickstart.fcm.SettingsActivity">
             android:background="@android:color/transparent"
             android:gravity="center"
             android:layout_marginLeft="5dp"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"
+            android:textSize="20sp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -34,7 +35,7 @@ tools:context="com.google.firebase.quickstart.fcm.SettingsActivity">
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:src="@drawable/drop" />
+            android:src="@mipmap/drop" />
 
     </RelativeLayout>
 
