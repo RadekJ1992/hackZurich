@@ -10,13 +10,7 @@
     tools:context="com.google.firebase.quickstart.fcm.MainActivity">
 
 
-    <!--
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/camera" /> -->
+
 
 
 
@@ -35,5 +29,13 @@
         android:layout_height="wrap_content"
         android:src="@drawable/settings"
         android:gravity="center"/>
+
+    <!--
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:layout_gravity="center_horizontal"
+    android:src="@drawable/camera" /> -->
 
 </LinearLayout>
