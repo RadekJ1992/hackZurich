@@ -2,8 +2,7 @@
     <string name="app_name">Firebase Cloud Messaging</string>
     <string name="quickstart_message">This app rocks.</string>
     <string name="subscribe_to_news">Request Picture</string>
-    <string name="log_token">Log Token</string>
-
+    <string name="log_token">Define objectives</string>
     <string name="msg_subscribed">Picture Requested</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="title_activity_image">imageActivity</string>
@@ -12,5 +11,7 @@
     <string name="checkbox1">Violence</string>
     <string name="checkbox2">Fire</string>
     <string name="settingsCommitButton">Commit settings</string>
+    <string name="checkbox3">Fire</string>
+    <string name="checkbox4">Drones</string>
 
 </resources>
