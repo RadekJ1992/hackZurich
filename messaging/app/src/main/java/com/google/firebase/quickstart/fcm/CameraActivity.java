@@ -26,12 +26,12 @@ public class CameraActivity extends AppCompatActivity {
 
         // get Intent from MainActivity
         Intent intent = getIntent();
-        String imageURL = intent.getStringExtra("key");
+        String imageURL = intent.getStringExtra("key").replace("{body=","").replace("}","");
 
         WebView webView = (WebView) findViewById(R.id.webView);
 
         WebView web = (WebView) findViewById(R.id.webView);
-        web.loadUrl("Your Url");
+        web.loadUrl(imageURL);
 
     }
 
