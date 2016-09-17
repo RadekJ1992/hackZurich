@@ -9,20 +9,52 @@ android:paddingRight="@dimen/activity_horizontal_margin"
 android:paddingTop="@dimen/activity_vertical_margin"
 tools:context="com.google.firebase.quickstart.fcm.SettingsActivity">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_marginRight="3dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinnerbackground"
+        android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/commitButton"
-        android:onClick="commitSettings"
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/drop" />
+
+    </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:src="@drawable/send"
-        android:layout_gravity="center_horizontal"/>
+        android:paddingTop="20dp"
+        android:layout_gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/commitButton"
+            android:onClick="commitSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:src="@drawable/send"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>
 
