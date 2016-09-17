@@ -10,6 +10,20 @@ android:paddingTop="@dimen/activity_vertical_margin"
 tools:context="com.google.firebase.quickstart.fcm.SettingsActivity">
 
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/commitButton"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settingsCommitButton"
+        android:onClick="commitSettings"
+        android:id="@+id/commitButton"/>
+
+    <!--
     <CheckBox android:id="@+id/checkbox_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,20 +52,8 @@ tools:context="com.google.firebase.quickstart.fcm.SettingsActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/checkbox2"
-        android:layout_above="@+id/commitButton"/>
+        android:layout_above="@+id/commitButton"/> -->
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/commitButton"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/settingsCommitButton"
-        android:onClick="commitSettings"
-        android:id="@+id/commitButton"/>
 
 </LinearLayout>
 

@@ -9,13 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.google.firebase.quickstart.fcm.MainActivity">
 
-
-
-
-
-
-
-
     <ImageButton
         android:id="@+id/subscribeButton"
         android:layout_width="wrap_content"
