@@ -9,7 +9,6 @@ android:paddingRight="@dimen/activity_horizontal_margin"
 android:paddingTop="@dimen/activity_vertical_margin"
 tools:context="com.google.firebase.quickstart.fcm.SettingsActivity">
 
-
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
@@ -21,39 +20,8 @@ tools:context="com.google.firebase.quickstart.fcm.SettingsActivity">
         android:layout_height="wrap_content"
         android:text="@string/settingsCommitButton"
         android:onClick="commitSettings"
-        android:id="@+id/commitButton"/>
-
-    <!--
-    <CheckBox android:id="@+id/checkbox_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/checkbox1"
-        android:layout_above="@+id/checkbox_2"/>
-
-    <CheckBox android:id="@+id/checkbox_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/checkbox2"
-        android:layout_above="@+id/checkbox_3"/>
-
-    <CheckBox android:id="@+id/checkbox_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/checkbox3"
-        android:layout_above="@+id/checkbox_4"/>
-
-    <CheckBox android:id="@+id/checkbox_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/checkbox4"
-        android:layout_above="@+id/checkbox_5"/>
-
-    <CheckBox android:id="@+id/checkbox_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/checkbox2"
-        android:layout_above="@+id/commitButton"/> -->
-
+        android:id="@+id/commitButton"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
 

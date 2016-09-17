@@ -75,8 +75,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(R.drawable.ic_stat_ic_notification)
-                            .setContentTitle("Status")
-                            .setContentText("Alarm about to launch.")
+                            .setContentTitle("Picture")
+                            .setContentText("We found something interesting.")
                             .setContentIntent(pendingIntent);
             Notification notification = mBuilder.build();
             mNotificationManager.notify(1, notification);

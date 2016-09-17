@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Firebase Cloud Messaging</string>
+    <string name="app_name">Catch It</string>
     <string name="quickstart_message">This app rocks.</string>
     <string name="subscribe_to_news">Request Picture</string>
     <string name="log_token">Define objectives</string>

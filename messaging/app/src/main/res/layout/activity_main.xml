@@ -9,19 +9,39 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.google.firebase.quickstart.fcm.MainActivity">
 
-    <ImageButton
-        android:id="@+id/subscribeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/camera"
-        android:gravity="center" />
 
-    <ImageButton
-        android:id="@+id/logTokenButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/settings"
-        android:gravity="center"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp">
+
+        <ImageButton
+            android:id="@+id/subscribeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/camera"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@id/logTokenButton"
+            android:background="@drawable/round_button"
+            android:layout_marginRight="30dp"/>
+
+        <ImageButton
+            android:id="@+id/logTokenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/settings"
+            android:background="@drawable/round_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"/>
+
+    </LinearLayout>
+
+
+
+
+
 
     <!--
 <ImageView
