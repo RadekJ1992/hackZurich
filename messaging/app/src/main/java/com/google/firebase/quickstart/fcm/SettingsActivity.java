@@ -44,6 +44,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         // send preferences to MainActivity and finish this activity
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("settings", result);
+
         SettingsActivity.this.startActivity(intent);
         finish();
     }

@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // [START subscribe_topics]
-                FirebaseMessaging.getInstance().subscribeToTopic("lastpicture");
+                FirebaseMessaging.getInstance().subscribeToTopic("lastPhoto");
                 // [END subscribe_topics]
 
                  // Wait  for 5 seconds before unsubscribing to make sure you received a URL
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        FirebaseMessaging.getInstance().unsubscribeFromTopic("lastpicture");
+                        FirebaseMessaging.getInstance().unsubscribeFromTopic("lastPhoto");
                     }
                 }, 5000);
 

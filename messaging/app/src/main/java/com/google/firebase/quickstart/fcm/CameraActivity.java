@@ -31,7 +31,7 @@ public class CameraActivity extends AppCompatActivity {
         WebView webView = (WebView) findViewById(R.id.webView);
 
         WebView web = (WebView) findViewById(R.id.webView);
-        web.loadUrl(imageURL);
+        web.loadUrl("http://172.31.4.188:8080"+imageURL);
 
     }
 
