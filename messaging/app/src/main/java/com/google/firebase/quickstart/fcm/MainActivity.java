@@ -16,9 +16,13 @@
 
 package com.google.firebase.quickstart.fcm;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private final String USER_AGENT = "Mozilla/5.0";
     private static final String TOKEN_ID = "token_id";
-
+    MyReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,21 +58,22 @@ public class MainActivity extends AppCompatActivity {
         //
         // Handle possible data accompanying notification message.
         // [START handle_data_extras]
+
+
         if (getIntent().getExtras() != null) {
             // case 1: the ittent is from settingsActivity
             if (getIntent().getExtras().get("settings") != null) {
+                Log.d(TAG,"IN HERE2");
                 new sendtoServer().execute(FirebaseInstanceId.getInstance().getToken(), getIntent().getExtras().get("settings").toString());
-            } else {
-                for (String key : getIntent().getExtras().keySet()) {
-                    Object value = getIntent().getExtras().get(key);
-                    Log.d(TAG, "Key: " + key + " Value: " + value);
+            }
+            else {
 
-                    // launch the camera activity in order to display the picture
-                    Intent myIntent = new Intent(MainActivity.this, CameraActivity.class);
-                    myIntent.putExtra("key", (String) value); //Optional parameters
-                    MainActivity.this.startActivity(myIntent);
+                String value = getIntent().getExtras().get("image_url").toString();
+                Intent myIntent = new Intent(MainActivity.this, CameraActivity.class);
+                myIntent.putExtra("key", (String) value); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
+                Log.d(TAG,"IN HERE");
 
-                }
             }
         }
         // [END handle_data_extras]
@@ -78,8 +83,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // [START subscribe_topics]
-                FirebaseMessaging.getInstance().subscribeToTopic("news");
+                FirebaseMessaging.getInstance().subscribeToTopic("lasttopic");
                 // [END subscribe_topics]
+
+                 // Wait  for 5 seconds before unsubscribing to make sure you received a URL
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        FirebaseMessaging.getInstance().unsubscribeFromTopic("lasttopic");
+                    }
+                }, 5000);
+
 
                 // Log and toast
                 String msg = getString(R.string.msg_subscribed);
@@ -88,6 +103,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });}
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+
+    }
     public void settingsIntent(View view) {
         // Get token
         String token = FirebaseInstanceId.getInstance().getToken();        // Log and toast
@@ -119,6 +144,17 @@ public class MainActivity extends AppCompatActivity {
             }
             return "done";
 
+        }
+    }
+
+
+
+    public class MyReceiver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String image_url = intent.getExtras().get("message").toString();
+            Log.d(TAG,image_url);
         }
     }
 

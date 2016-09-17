@@ -16,14 +16,17 @@
 
 package com.google.firebase.quickstart.fcm;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -57,11 +60,37 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+            String msg = "This is the url" + remoteMessage.getData().toString();
+            Log.d(TAG, msg);
+            Intent resultIntent = new Intent(this, MainActivity.class);
+            resultIntent.putExtra("image_url",remoteMessage.getData().toString());
+            PendingIntent pendingIntent =
+                    PendingIntent.getActivity(
+                            this,
+                            0,
+                            resultIntent,
+                            PendingIntent.FLAG_UPDATE_CURRENT
+                    );
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(this)
+                            .setSmallIcon(R.drawable.ic_stat_ic_notification)
+                            .setContentTitle("Status")
+                            .setContentText("Alarm about to launch.")
+                            .setContentIntent(pendingIntent);
+            Notification notification = mBuilder.build();
+            mNotificationManager.notify(1, notification);
+            //broadcastIntent(remoteMessage.getData().toString());
+
         }
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            String msg = "This is the url" + remoteMessage.getNotification().getBody();
+            Log.d(TAG, msg);
+            //Toast.makeText(MyFirebaseMessagingService.this, msg, Toast.LENGTH_SHORT).show();
+            //broadcastIntent(remoteMessage.getNotification().getBody());
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
@@ -69,11 +98,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
     // [END receive_message]
 
+
+
+
+    private void broadcastIntent(String message) {
+;       Log.d(TAG,"gonna broadcast this"+message);
+        Intent intent = new Intent("URL");
+        intent.putExtra("message", message);
+        sendBroadcast(intent);
+
+    }
+
     /**
      * Create and show a simple notification containing the received FCM message.
      *
      * @param messageBody FCM message body received.
      */
+
     private void sendNotification(String messageBody) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -83,7 +124,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_stat_ic_notification)
-                .setContentTitle("FCM Message")
+                .setContentTitle("FUCK THIS")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
