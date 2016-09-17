@@ -6,4 +6,6 @@
 
     <string name="msg_subscribed">Picture Requested</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string name="title_activity_image">imageActivity</string>
+    <string name="title_activity_camera">CameraActivity</string>
 </resources>

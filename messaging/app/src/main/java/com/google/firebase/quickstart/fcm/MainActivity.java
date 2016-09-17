@@ -98,21 +98,6 @@ public class MainActivity extends AppCompatActivity {
     private class sendtoServer extends AsyncTask<String, String, String> {
         protected String doInBackground(String... strings) {
             try {
-
-                // First way
-//                URL url1 = new URL("http://172.31.7.145:8080/setMobileIdAndKeywords?keywords=fire,gun&mobileID =123");
-//                HttpURLConnection conn = (HttpURLConnection) url1.openConnection();
-//                conn.setDoOutput(true);
-//                conn.setRequestMethod("GET");
-//                conn.setRequestProperty("Content-Type", "text/plain");
-//
-//                String input = "api_key=123";
-//
-//                OutputStream os = conn.getOutputStream();
-//                os.write(input.getBytes());
-//                os.flush();
-
-                // Second way
                 Log.d(TAG,"sending to server");
                 String url = "http://172.31.4.188:8080/setMobileIdAndKeywords?keywords=fire,gun&mobileId=123";
                 URL obj = new URL(url);
