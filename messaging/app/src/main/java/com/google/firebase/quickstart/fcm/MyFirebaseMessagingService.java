@@ -68,7 +68,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             if (MainActivity.isInForeground()) {
                 Intent dialogIntent = new Intent(this, CameraActivity.class);
-                dialogIntent.putExtra("image_url",remoteMessage.getData().toString());
+                dialogIntent.putExtra("key",remoteMessage.getData().toString());
                 dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(dialogIntent);
             } else {
