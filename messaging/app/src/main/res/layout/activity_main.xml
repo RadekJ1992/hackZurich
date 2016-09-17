@@ -34,7 +34,8 @@
             android:src="@drawable/settings"
             android:background="@drawable/round_button"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:onClick="settingsIntent"/>
 
     </LinearLayout>
 

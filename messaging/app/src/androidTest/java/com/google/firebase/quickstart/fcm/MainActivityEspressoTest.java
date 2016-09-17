@@ -47,7 +47,6 @@ public class MainActivityEspressoTest {
 
     @Test
     public void testSubscribeAndLog() throws InterruptedException {
-        onView(withId(R.id.informationTextView)).check(matches(isDisplayed()));
 
         // Click subscribe button and check toast
         onView(allOf(withId(R.id.subscribeButton), withText(R.string.subscribe_to_news)))
