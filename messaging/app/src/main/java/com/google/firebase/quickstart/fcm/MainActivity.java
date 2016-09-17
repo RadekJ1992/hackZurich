@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private final String USER_AGENT = "Mozilla/5.0";
+    private static final String TOKEN_ID = "token_id";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +55,20 @@ public class MainActivity extends AppCompatActivity {
         // Handle possible data accompanying notification message.
         // [START handle_data_extras]
         if (getIntent().getExtras() != null) {
-            for (String key : getIntent().getExtras().keySet()) {
-                Object value = getIntent().getExtras().get(key);
-                Log.d(TAG, "Key: " + key + " Value: " + value);
+            // case 1: the ittent is from settingsActivity
+            if (getIntent().getExtras().get("settings") != null) {
+                // TODO: extract
+            } else {
+                for (String key : getIntent().getExtras().keySet()) {
+                    Object value = getIntent().getExtras().get(key);
+                    Log.d(TAG, "Key: " + key + " Value: " + value);
 
-                // launch the camera activity in order to display the picture
-                Intent myIntent = new Intent(MainActivity.this, CameraActivity.class);
-                myIntent.putExtra("key", (String) value); //Optional parameters
-                MainActivity.this.startActivity(myIntent);
+                    // launch the camera activity in order to display the picture
+                    Intent myIntent = new Intent(MainActivity.this, CameraActivity.class);
+                    myIntent.putExtra("key", (String) value); //Optional parameters
+                    MainActivity.this.startActivity(myIntent);
 
+                }
             }
         }
         // [END handle_data_extras]
@@ -79,26 +86,17 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, msg);
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
-        });
+        });}
 
-        Button logTokenButton = (Button) findViewById(R.id.logTokenButton);
-        logTokenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get token
-                String token = FirebaseInstanceId.getInstance().getToken();
-
-                // Log and toast
-                String msg = getString(R.string.msg_token_fmt, token);
-                Log.d(TAG, msg);
-                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-
-                // Send the token to the app-server
-                new sendtoServer().execute("server");
-
-
-            }
-        });
+    public void settingsIntent(View view) {
+        // Get token
+        String token = FirebaseInstanceId.getInstance().getToken();        // Log and toast
+        String msg = getString(R.string.msg_token_fmt, token);
+        Log.d(TAG, msg);
+        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra(TOKEN_ID,token);
+        startActivity(intent);
     }
 
     private class sendtoServer extends AsyncTask<String, String, String> {
@@ -113,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 int responseCode = con.getResponseCode();
                 System.out.println("\nSending 'GET' request to URL : " + url);
                 System.out.println("Response Code : " + responseCode);
-
 
             } catch (Exception e) {
                 e.printStackTrace();
