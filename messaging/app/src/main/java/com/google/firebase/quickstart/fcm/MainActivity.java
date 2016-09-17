@@ -16,6 +16,7 @@
 
 package com.google.firebase.quickstart.fcm;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
             for (String key : getIntent().getExtras().keySet()) {
                 Object value = getIntent().getExtras().get(key);
                 Log.d(TAG, "Key: " + key + " Value: " + value);
+
+                // launch the camera activity in order to display the picture
+                Intent myIntent = new Intent(MainActivity.this, CameraActivity.class);
+                myIntent.putExtra("key", (String) value); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
+
             }
         }
         // [END handle_data_extras]
@@ -85,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 String msg = getString(R.string.msg_token_fmt, token);
                 Log.d(TAG, msg);
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-
 
                 // Send the token to the app-server
                 new sendtoServer().execute("server");
