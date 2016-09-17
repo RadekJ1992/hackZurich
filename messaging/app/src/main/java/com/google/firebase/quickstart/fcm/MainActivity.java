@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private final String USER_AGENT = "Mozilla/5.0";
     private static final String TOKEN_ID = "token_id";
+
     MyReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -16,6 +16,7 @@
 
 package com.google.firebase.quickstart.fcm;
 
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -30,6 +31,8 @@ import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.List;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -62,25 +65,54 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
             String msg = "This is the url" + remoteMessage.getData().toString();
             Log.d(TAG, msg);
-            Intent resultIntent = new Intent(this, MainActivity.class);
-            resultIntent.putExtra("image_url",remoteMessage.getData().toString());
-            PendingIntent pendingIntent =
-                    PendingIntent.getActivity(
-                            this,
-                            0,
-                            resultIntent,
-                            PendingIntent.FLAG_UPDATE_CURRENT
-                    );
-            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            NotificationCompat.Builder mBuilder =
-                    new NotificationCompat.Builder(this)
-                            .setSmallIcon(R.drawable.ic_stat_ic_notification)
-                            .setContentTitle("Picture")
-                            .setContentText("We found something interesting.")
-                            .setContentIntent(pendingIntent);
-            Notification notification = mBuilder.build();
-            mNotificationManager.notify(1, notification);
-            //broadcastIntent(remoteMessage.getData().toString());
+
+            // check whether app is in foreground
+            Context appContext = getApplicationContext();
+            ActivityManager activityManager = (ActivityManager) appContext.getSystemService(Context.ACTIVITY_SERVICE);
+            List<ActivityManager.RunningTaskInfo> services = activityManager
+                    .getRunningTasks(Integer.MAX_VALUE);
+            boolean isActivityFound = false;
+
+            if (services.get(0).topActivity.getPackageName().toString()
+                    .equalsIgnoreCase(appContext.getPackageName().toString())) {
+                isActivityFound = true;
+            }
+
+
+
+            if (isActivityFound) {
+                Intent dialogIntent = new Intent(this, CameraActivity.class);
+                dialogIntent.putExtra("image_url",remoteMessage.getData().toString());
+                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(dialogIntent);
+
+            } else {
+                Intent resultIntent = new Intent(this, MainActivity.class);
+                resultIntent.putExtra("image_url",remoteMessage.getData().toString());
+                PendingIntent pendingIntent =
+                        PendingIntent.getActivity(
+                                this,
+                                0,
+                                resultIntent,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+                NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                NotificationCompat.Builder mBuilder =
+                        new NotificationCompat.Builder(this)
+                                .setSmallIcon(R.drawable.ic_stat_ic_notification)
+                                .setContentTitle("Picture")
+                                .setContentText("We found something interesting.")
+                                .setContentIntent(pendingIntent);
+                Notification notification = mBuilder.build();
+                mNotificationManager.notify(1, notification);
+                //broadcastIntent(remoteMessage.getData().toString());
+            }
+
+
+
+
+
+
 
         }
 
