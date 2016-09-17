@@ -21,12 +21,14 @@
     <CheckBox android:id="@+id/checkbox_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/checkbox2"/>
+        android:text="@string/checkbox2"
+        android:layout_above="@+id/commitButton"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/settingsCommitButton"
-        android:onClick="commitSettings"/>
+        android:onClick="commitSettings"
+        android:id="@+id/commitButton"/>
 
 </RelativeLayout>
