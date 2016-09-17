@@ -11,7 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
+
+import java.io.InputStream;
+import java.net.URL;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -22,26 +26,13 @@ public class CameraActivity extends AppCompatActivity {
 
         // get Intent from MainActivity
         Intent intent = getIntent();
-        String imageAsString = intent.getStringExtra("key");
+        String imageURL = intent.getStringExtra("key");
 
-        setImageViewFromString(imageAsString);
+        WebView webView = (WebView) findViewById(R.id.webView);
 
-    }
+        WebView web = (WebView) findViewById(R.id.webView);
+        web.loadUrl("Your Url");
 
-    private void setImageViewFromString(String imageAsString) {
-
-        // get imageView
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
-
-        // parse string, i.e. remove everything which is not part of the base 64 encoding
-        // TODO
-
-        // convert String to image
-        byte[] decodedString = Base64.decode(imageAsString.toString(), Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-
-        // set imageview image
-        imageView.setImageBitmap(decodedByte);
     }
 
 }
