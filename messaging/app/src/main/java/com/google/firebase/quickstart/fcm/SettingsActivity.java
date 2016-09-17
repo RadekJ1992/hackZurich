@@ -35,7 +35,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     }
 
     protected void commitSettings(View view) {
-        // send preferences to MainActivity and finish this activity
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("settings", result);
 
