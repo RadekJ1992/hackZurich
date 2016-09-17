@@ -72,8 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 new sendtoServer().execute(FirebaseInstanceId.getInstance().getToken(), getIntent().getExtras().get("settings").toString());
             }
             else {
-
-                String value = getIntent().getExtras().get("image_url").toString();
+                String value = "";
+                if (getIntent().getExtras().get("image_url") != null) {
+                    value = getIntent().getExtras().get("image_url").toString();
+                }
                 Intent myIntent = new Intent(MainActivity.this, CameraActivity.class);
                 myIntent.putExtra("key", (String) value); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
