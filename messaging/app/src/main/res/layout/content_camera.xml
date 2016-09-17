@@ -12,9 +12,4 @@
     tools:context="com.google.firebase.quickstart.fcm.CameraActivity"
     tools:showIn="@layout/activity_camera">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"/>
-
 </RelativeLayout>
