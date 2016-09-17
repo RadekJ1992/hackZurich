@@ -34,6 +34,7 @@ public class CameraActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
 
         // parse string, i.e. remove everything which is not part of the base 64 encoding
+        // TODO
 
         // convert String to image
         byte[] decodedString = Base64.decode(imageAsString.toString(), Base64.DEFAULT);
