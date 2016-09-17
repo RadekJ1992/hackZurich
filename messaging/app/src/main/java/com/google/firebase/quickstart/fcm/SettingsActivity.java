@@ -36,8 +36,9 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         // send preferences to MainActivity and finish this activity
-        Intent intent = new Intent(this, SettingsActivity.class);
-        intent.putExtra("settings", violence);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("settings", "violence");
+        SettingsActivity.this.startActivity(intent);
         finish();
     }
 

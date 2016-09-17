@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // [START subscribe_topics]
-                FirebaseMessaging.getInstance().subscribeToTopic("lasttopic");
+                FirebaseMessaging.getInstance().subscribeToTopic("lastpicture");
                 // [END subscribe_topics]
 
                  // Wait  for 5 seconds before unsubscribing to make sure you received a URL
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        FirebaseMessaging.getInstance().unsubscribeFromTopic("lasttopic");
+                        FirebaseMessaging.getInstance().unsubscribeFromTopic("lastpicture");
                     }
                 }, 5000);
 
@@ -129,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Log.d(TAG,"sending to server");
                 String settingsString = strings[0];
-                String url = "http://172.31.4.188:8080/setMobileIdAndKeywords?keywords=fire,gun&mobileId=123";
+                String keyword = strings[1];
+                String url = "http://172.31.4.188:8080/setMobileIdAndKeywords?keywords="+keyword+"&mobileId="+settingsString+"";
                 URL obj = new URL(url);
                 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
                 //add request header
