@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/camera"
             android:layout_centerHorizontal="true"
-            android:layout_toLeftOf="@id/logTokenButton"
+            android:layout_toLeftOf="@+id/logTokenButton"
             android:background="@drawable/round_button"
             android:layout_marginRight="30dp"/>
 
