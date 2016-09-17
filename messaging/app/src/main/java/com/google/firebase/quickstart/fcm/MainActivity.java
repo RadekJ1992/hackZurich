@@ -101,13 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         FirebaseMessaging.getInstance().unsubscribeFromTopic("lastPhoto");
                     }
                 }, 5000);
-
-
-                // Log and toast
-                String msg = getString(R.string.msg_subscribed);
-                Log.d(TAG, msg);
-                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-            }
+}
         });}
 
     @Override
